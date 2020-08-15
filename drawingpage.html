@@ -7,6 +7,11 @@
   <!-- 色変更に使うライブラリで用意されているCSSを導入 https://github.com/bebraw/colorjoe -->
   <link rel="stylesheet" href="css/drawingpage.css">
   <title>お絵かきアプリ</title>
+
+  <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
 </head>
 
 
@@ -25,7 +30,7 @@
         </div>
         <div class="drawingpage__board">
           <canvas
-            class="drawingpage__board__draw-area"
+            id="drawingpage__board__draw-area"
             
             style="border: 1px solid #000000;"></canvas>
           <!-- 色を選択できるカラーパレットを用意する。 -->
