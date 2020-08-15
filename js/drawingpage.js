@@ -10,29 +10,6 @@ window.addEventListener('load', () => {
   const context = canvas.getContext('2d');
   const lastPosition = { x: null, y: null };
   
-  //ペンの太さ調整
-  const penSS = document.querySelector("#drawingpage__pensize__pen-ss");
-  penSS.addEventListener("click", () => {
-      context.lineWidth = 1;
-  });
-  const penS = document.querySelector("#drawingpage__pensize__pen-s");
-  penS.addEventListener("click", () => {
-      context.lineWidth = 5;
-  });
-  const penM = document.querySelector("#drawingpage__pensize__pen-m");
-  penM.addEventListener("click", () => {
-      context.lineWidth = 10;
-  });
-  const penL = document.querySelector("#drawingpage__pensize__pen-l");
-  penL.addEventListener("click", () => {
-      context.lineWidth = 15;
-  });
-  const penLL = document.querySelector("#drawingpage__pensize__pen-ll");
-  penLL.addEventListener("click", () => {
-      context.lineWidth = 20;
-  });
-  
-  let isDrag = false;
   
   // 現在の線の色を保持する変数(デフォルトは黒(#000000)とする)
   let currentColor = '#000000';
@@ -111,6 +88,29 @@ window.addEventListener('load', () => {
         });
     }
     
+    //ペンの太さ調節
+    const penSS = document.querySelector("#drawingpage__pensize__pen-ss");
+    penSS.addEventListener("click", () => {
+        context.lineWidth = 1;
+    });
+    const penS = document.querySelector("#drawingpage__pensize__pen-s");
+    penS.addEventListener("click", () => {
+        context.lineWidth = 5;
+    });
+    const penM = document.querySelector("#drawingpage__pensize__pen-m");
+    penM.addEventListener("click", () => {
+        context.lineWidth = 10;
+    });
+    const penL = document.querySelector("#drawingpage__pensize__pen-l");
+    penL.addEventListener("click", () => {
+        context.lineWidth = 15;
+    });
+    const penLL = document.querySelector("#drawingpage__pensize__pen-ll");
+    penLL.addEventListener("click", () => {
+        context.lineWidth = 20;
+    });
+    
+    let isDrag = false;
 
     initEventHandler();
     
