@@ -8,112 +8,97 @@
 window.addEventListener('load', () => {
   const canvas = document.querySelector('#drawingpage__board__draw-area');
   const context = canvas.getContext('2d');
-  const lastPosition = { x: null, y: null };
-  
-  //ペンの太さ調整
+
+  canvas.addEventListener("mousemove", event => {
+    draw(event.layerX, event.layerY);
+  });
+  canvas.addEventListener("touchmove", event => {
+    draw(event.layerX, event.layerY);
+  });
+  //パソコンでクリックしてる間だけ描けるようにした機能
+  canvas.addEventListener("mousedown", () => {
+    context.beginPath();
+    isDrag = true;
+  });
+  canvas.addEventListener("mouseup", () => {
+    context.closePath();
+    isDrag = false;
+  });
+  //スマホで描けるようにする機能
+  canvas.addEventListener("touchstart", () => {
+    context.beginPath();
+    isDrag = true;
+  });
+  canvas.addEventListener("touchend", () => {
+    context.closePath();
+    isDrag = false;
+  });
+  //お絵かきするところをきれいにする機能
+  const clearButton = document.querySelector("#drawingpage__pen__clear-button");
+  clearButton.addEventListener("click", () => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  });
+  //ペンの色を変える機能
+  const colorRed = document.querySelector("#drawingpage__pen__color-red");
+  colorRed.addEventListener("click", () => {
+    context.strokeStyle = "red";
+  });
+  const colorBlue = document.querySelector("#drawingpage__pen__color-blue");
+  colorBlue.addEventListener("click", () => {
+    context.strokeStyle = "blue";
+  });
+  const colorGreen = document.querySelector("#drawingpage__pen__color-green");
+  colorGreen.addEventListener("click", () => {
+    context.strokeStyle = "green";
+  });
+  const colorYellow = document.querySelector("#drawingpage__pen__color-yellow");
+  colorYellow.addEventListener("click", () => {
+    context.strokeStyle = "yellow";
+  });
+  const colorBlack = document.querySelector("#drawingpage__pen__color-black");
+  colorBlack.addEventListener("click", () => {
+    context.strokeStyle = "black";
+  });
+  //消しゴムの機能
+  const eraser = document.querySelector("#drawingpage__pen__eraser-button");
+  eraser.addEventListener("click", () => {
+    context.strokeStyle = "white";
+  });
+  //ぺんの太さを変える機能
   const penSS = document.querySelector("#drawingpage__pensize__pen-ss");
   penSS.addEventListener("click", () => {
-      context.lineWidth = 1;
+    context.lineWidth = 1;
   });
   const penS = document.querySelector("#drawingpage__pensize__pen-s");
   penS.addEventListener("click", () => {
-      context.lineWidth = 5;
+    context.lineWidth = 5;
   });
   const penM = document.querySelector("#drawingpage__pensize__pen-m");
   penM.addEventListener("click", () => {
-      context.lineWidth = 10;
+    context.lineWidth = 10;
   });
   const penL = document.querySelector("#drawingpage__pensize__pen-l");
   penL.addEventListener("click", () => {
-      context.lineWidth = 15;
+    context.lineWidth = 15;
   });
   const penLL = document.querySelector("#drawingpage__pensize__pen-ll");
   penLL.addEventListener("click", () => {
-      context.lineWidth = 20;
+    context.lineWidth = 20;
   });
   
   let isDrag = false;
-  
-  // 現在の線の色を保持する変数(デフォルトは黒(#000000)とする)
-  let currentColor = '#000000';
-  
+  //線をかく機能
   function draw(x, y) {
-      if(!isDrag) {
-          return;
-        }
-        context.lineCap = 'round';
-        context.lineJoin = 'round';
-        context.lineWidth = 5;
-        context.strokeStyle = currentColor;
-        if (lastPosition.x === null || lastPosition.y === null) {
-            context.moveTo(x, y);
-        } else {
-            context.moveTo(lastPosition.x, lastPosition.y);
-        }
-        context.lineTo(x, y);
-        context.stroke();
-        
-        lastPosition.x = x;
-        lastPosition.y = y;
+    if (!isDrag) {
+      return;
     }
-    
-    function clear() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-    }
-    
-    function dragStart(event) {
-        context.beginPath();
-        
-        isDrag = true;
-    }
-    
-    function dragEnd(event) {
-        context.closePath();
-        isDrag = false;
-        lastPosition.x = null;
-        lastPosition.y = null;
-    }
-    
-    function initEventHandler() {
-        const clearButton = document.querySelector('#drawingpage__all-eraser__clear-button');
-        clearButton.addEventListener('click', clear);
-        
-        // 消しゴムモードを選択したときの挙動
-        const eraserButton = document.querySelector('#drawingpage__eraser__eraser-button');
-        eraserButton.addEventListener('click', () => {
-            // 消しゴムと同等の機能を実装したい場合は現在選択している線の色を
-            // 白(#FFFFFF)に変更するだけでよい
-            currentColor = '#FFFFFF';
-        });
-        
-        canvas.addEventListener('mousedown', dragStart);
-        canvas.addEventListener('mouseup', dragEnd);
-        canvas.addEventListener('mouseout', dragEnd);
-        canvas.addEventListener('mousemove', (event) => {
-            draw(event.layerX, event.layerY);
-        });
-    }
-    
-    
-    // カラーパレットの設置を行う
-    function initColorPalette() {
-        const joe = colorjoe.rgb('drawingpage__board__color-palette', currentColor);
-        
-        // 'done'イベントは、カラーパレットから色を選択した時に呼ばれるイベント
-        // ドキュメント: https://github.com/bebraw/colorjoe#event-handling
-        joe.on('done', color => {
-            // コールバック関数の引数からcolorオブジェクトを受け取り、
-            // このcolorオブジェクト経由で選択した色情報を取得する
-            
-            // color.hex()を実行すると '#FF0000' のような形式で色情報を16進数の形式で受け取れる
-            // draw関数の手前で定義されている、線の色を保持する変数に代入して色情報を変更する
-            currentColor = color.hex();
-        });
-    }
-    
+    context.lineTo(x, y);
+    context.stroke();
+  }
 
     initEventHandler();
     
     // カラーパレット情報を初期化する
   initColorPalette();
 });
+

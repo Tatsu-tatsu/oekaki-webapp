@@ -9,6 +9,7 @@
   <title>お絵かきアプリ</title>
 </head>
 <body class="drawingpage">
+  
   <div class="drawingpage__title">お絵かきアプリ</div>
   <div class="drawingpage__pensize">
     <button id="drawingpage__pensize__pen-ss">極細</button>
@@ -26,11 +27,14 @@
     <!-- 色を選択できるカラーパレットを用意する。 -->
     <span id="drawingpage__board__color-palette"></span>
   </div>
-  <div class="drawingpage__all-eraser">
-    <button id="drawingpage__all-eraser__clear-button">全消し</button>
-  </div>
-  <div class="drawingpage__eraser__eraser-button">
-    <button id="drawingpage__eraser__eraser-button">消しゴムモード</button>
+  <div class="drawingpage__pen">
+    <button id="drawingpage__pen__clear-button">全消し</button>
+    <button id="drawingpage__pen__eraser-button">消しゴムモード</button>
+    <button id="drawingpage__pen__color-red">赤</button>
+    <button id="drawingpage__pen__color-blue">青</button>
+    <button id="drawingpage__pen__color-green">緑</button>
+    <button id="drawingpage__pen__color-yellow">黄</button>
+    <button id="drawingpage__pen__color-black">黒</button>
   </div>
   <!-- 色変更に使うライブラリを導入 https://github.com/bebraw/colorjoe -->
   <script src="./js/colorjoe.min.js"></script>
