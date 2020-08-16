@@ -42,12 +42,18 @@ body.startpage {
 .startpage-start__click {
   height: 12vw;
   width: 70%;
-  border-radius: 30px;
+  border-radius: 25px;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 166, 0, 0.308);
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.startpage-start__click:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
 }
 
 .startpage-start__click__name {
