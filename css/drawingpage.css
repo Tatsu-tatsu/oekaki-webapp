@@ -16,6 +16,7 @@ body.drawingpage {
   width: 100%;
   height: 80px;
   font-size: 25px;
+  color: #494949;
   display: flex;
   justify-content: center;
   align-items: center;
