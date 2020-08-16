@@ -89,8 +89,14 @@ window.addEventListener('load', () => {
   //画像保存機能
   const downloadbtn = document.querySelector("#drawingpage__download-button");
   downloadbtn.addEventListener("click", () => {
-    var base64 = canvas.toDataURL("image/png");
-    document.querySelector("#drawingpage__download-button").href = base64;
+    var result = window.confirm('この画像を保存しますか？');
+    if (result){
+      var base64 = canvas.toDataURL("image/png");
+      document.querySelector("#drawingpage__download-button").href = base64;
+    }
+    else{
+
+    }
   });
   function setBgColor(){
     // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
@@ -99,7 +105,6 @@ window.addEventListener('load', () => {
   }
 
 
-  
   
   let isDrag = false;
   //線をかく機能

@@ -12,6 +12,18 @@
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
+
+    <script src="jquery.js"></script>
+<script src="jquery.simple.timer.js"></script>
+<script>
+    $(function(){
+    $('.timer').startTimer({
+        onComplete: function(element){
+            element.addClass('is-complete');
+        }
+    });
+});
+</script>
 </head>
 
 
@@ -21,7 +33,9 @@
   </div>
   <div class="drawingpage__title">お絵かきアプリ</div>
   <div id="drawingpage__timer-id" class="drawingpage__timer">時間</div>
-
+  <div class="timer" data-minutes-left="3"></div>
+  
+  
         <div class="drawingpage__pensize">
           <button id="drawingpage__pensize__pen-ss">極細</button>
           <button id="drawingpage__pensize__pen-s">細</button>
@@ -64,5 +78,8 @@
   <script src="./js/colorjoe.min.js"></script>
   <script src="./js/drawingpage.js"></script>
   <script src="./js/timer.js"></script>
+  <script src="./js/jquery.js"></script>
+  <script src="./js/jquery.simple.timer.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
