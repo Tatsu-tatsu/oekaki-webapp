@@ -6,7 +6,7 @@
 // 元々書かれてた説明のコメントは削除しました。理由は次のとおりです。
 // - 今回の変更差分の説明コメントのみにすることで、どの部分で変更があったかわかりやすくするため
 window.addEventListener('load', () => {
-  const canvas = document.querySelector('#drawingpage__board__draw-area');
+  const canvas = document.querySelector('#drawingpage__board__draw-area-id');
   const context = canvas.getContext('2d');
 
   canvas.addEventListener("mousemove", event => {

@@ -43,7 +43,8 @@ button.btn {
   align-items: center;
 }
 
-*#drawingpage__board__draw-area {
+
+.drawingpage__board__draw-area {
   background: white;
 }
 
