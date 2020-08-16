@@ -2,6 +2,7 @@ body.startpage {
   background: white;
   margin:0px;
   height:100vw;
+  font-family: 'メイリオ', 'Meiryo' , sans-serif;
 }
 
 .startpage-background {
@@ -18,7 +19,7 @@ body.startpage {
   height: 90%;
   width: 100%;
   font-size: 30px;
-
+  color: #fff;
   display:flex;
   justify-content: center;
   align-items: center;
