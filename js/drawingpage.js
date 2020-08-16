@@ -85,6 +85,21 @@ window.addEventListener('load', () => {
   penLL.addEventListener("click", () => {
     context.lineWidth = 20;
   });
+
+  //画像保存機能
+  const downloadbtn = document.querySelector("#drawingpage__download-button");
+  downloadbtn.addEventListener("click", () => {
+    var base64 = canvas.toDataURL("image/png");
+    document.querySelector("#drawingpage__download-button").href = base64;
+  });
+  function setBgColor(){
+    // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
+    context.fillStyle = "white";
+    context.fillRect(0,0,330,350);
+  }
+
+
+  
   
   let isDrag = false;
   //線をかく機能
