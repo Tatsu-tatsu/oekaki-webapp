@@ -86,10 +86,10 @@
 //   clearInterval(timer1);
 // }  
 
-//自動的にスタートへ戻る
-setTimeout(function(){
-  window.location.href = '/startpage.html';
-}, 60*1000);
+// //自動的にスタートへ戻る
+// setTimeout(function(){
+//   window.location.href = '/startpage.html';
+// }, 60*1000);
 
 // $(function(){
 //   $('.timer').startTimer({
